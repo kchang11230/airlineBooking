@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Airline Booking System
 
-## Getting Started
+## Run Project
 
-First, run the development server:
+npm install
 
-```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## MongoDB Collections
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- airports
+- passengers
+- schedules
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## APIs
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Search Flights
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+GET /api/schedules
 
-## Deploy on Vercel
+Example:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+/api/schedules?orig=NZNE&dest=YSSY&date1=2026-06-01&date2=2026-06-30
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+### Book Flight
+
+POST /api/book
+
+Body:
+
+{
+  "scheduleId":"...",
+  "passengerId":"..."
+}
+
+---
+
+### Cancel Booking
+
+POST /api/cancel
+
+Body:
+
+{
+  "scheduleId":"...",
+  "passengerId":"..."
+}
+
+---
+
+### Passenger Bookings
+
+GET /api/passenger?id=...
+
+---
+
+## Seed Scripts
+
+py scripts/seed_airports.py
+
+py scripts/seed_passengers.py
+
+py scripts/generate_schedules.py
