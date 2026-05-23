@@ -27,7 +27,7 @@ export async function POST(request: Request) {
           bookingRef: bookingRef
         }
       }
-    }
+    }as any
   );
 
   if (result.modifiedCount === 0) {

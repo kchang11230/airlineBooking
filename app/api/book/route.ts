@@ -69,7 +69,7 @@ export async function POST(request: Request) {
                         bookingRef
                 }
             }
-        }
+        }as any
     );
 
     return Response.json({
