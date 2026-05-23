@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import FlightCard from "@/components/FlightCard";
 
-export default function SearchPage() {
+function SearchContent() {
 
   const params = useSearchParams();
 
@@ -41,7 +41,6 @@ export default function SearchPage() {
 
     <div className="min-h-screen bg-[#f5f7fa]">
 
-      {/* Header */}
       <div className="bg-[#002b5c] text-white">
 
         <div className="max-w-6xl mx-auto px-6 py-8">
@@ -56,7 +55,7 @@ export default function SearchPage() {
 
               <p className="mt-2 text-blue-100 text-lg">
                 {orig} → {dest}
-              </p>
+              </p >
 
             </div>
 
@@ -64,11 +63,11 @@ export default function SearchPage() {
 
               <p>
                 Travel dates
-              </p>
+              </p >
 
               <p className="font-semibold">
                 {date1} → {date2}
-              </p>
+              </p >
 
             </div>
 
@@ -78,7 +77,6 @@ export default function SearchPage() {
 
       </div>
 
-      {/* Content */}
       <div className="max-w-5xl mx-auto px-6 py-8">
 
         {loading && (
@@ -87,7 +85,7 @@ export default function SearchPage() {
 
             <p className="text-gray-500">
               Searching flights...
-            </p>
+            </p >
 
           </div>
         )}
@@ -98,7 +96,7 @@ export default function SearchPage() {
 
             <p className="text-gray-500">
               No flights available.
-            </p>
+            </p >
 
           </div>
         )}
@@ -117,5 +115,14 @@ export default function SearchPage() {
       </div>
 
     </div>
+  );
+}
+
+export default function SearchPage() {
+
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchContent />
+    </Suspense>
   );
 }
