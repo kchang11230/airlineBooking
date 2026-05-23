@@ -28,12 +28,14 @@ export async function GET(request: Request) {
         "date1",
         "2026-01-01"
     );
+    dt1.setHours(0, 0, 0, 0);
 
     const dt2 = await getDate(
         params,
         "date2",
         "2026-12-31"
     );
+    dt2.setHours(23, 59, 59, 999);
 
     const db = await connectDB();
 
@@ -71,7 +73,15 @@ export async function GET(request: Request) {
             flight_no: doc.flightNo,
             depDate: doc.depDate,
             arrDate: doc.arrDate,
-            seats_avail: avail
+            seats_avail: avail,
+            
+            orig: origDoc?.code,
+            orig_name: origDoc?.name,
+            orig_tz: origDoc?.tz,
+
+            dest: destDoc?.code,
+            dest_name: destDoc?.name,
+            dest_tz: destDoc?.tz
         };
 
         entries.push(entry);

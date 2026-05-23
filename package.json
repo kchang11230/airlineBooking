@@ -9,10 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "dayjs": "^1.11.20",
     "mongodb": "^7.2.0",
     "next": "16.2.6",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "timezone": "^1.0.23",
+    "utc": "^0.1.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

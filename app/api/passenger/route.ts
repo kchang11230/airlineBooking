@@ -40,10 +40,31 @@ export async function GET(request: Request) {
 
     }).toArray();
 
+    //flatten the bookings
+    const result = [];
+
+    for (const schedule of bookings) {
+        for (const booking of schedule.bookings) {
+            if (booking.passengerId.toString() === passengerId) {
+                result.push({
+                    bookingRef: booking.bookingRef,
+                    flight: {
+                        _id: schedule._id,
+                        flightNo: schedule.flightNo,
+                        orig: schedule.orig,
+                        dest: schedule.dest,
+                        depDate: schedule.depDate,
+                        arrDate: schedule.arrDate
+                    }
+                });
+            }
+        }
+    }
+
     return Response.json({
 
         passenger: passenger,
 
-        bookings: bookings
+        bookings: result
     });
 }
