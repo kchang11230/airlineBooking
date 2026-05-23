@@ -25,8 +25,10 @@ export async function POST(request: Request) {
 
     // 3. if not exists → create new passenger
     const result = await passengers.insertOne({
+        title: body.title,
         firstname: body.firstname,
         lastname: body.lastname,
+        gender: body.gender,
         email: body.email
     });
 

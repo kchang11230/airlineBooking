@@ -22,19 +22,35 @@ export default function MyBookingsPage() {
   if (!data) return <p>Loading...</p>;
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="min-h-screen bg-[#f5f7fa]">
+            {/* Header */}
+      <div className="bg-[#002b5c] text-white">
 
-      <h1 className="text-2xl font-bold text-center text-blue-700">
-        My Bookings
-      </h1>
+        <div className="max-w-6xl mx-auto px-6 py-8">
 
-      <div className="space-y-4">
+          <div className="flex items-center justify-between">
+
+            <div>
+
+              <h1 className="text-4xl font-bold">
+                My Bookings
+              </h1>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div className="max-w-5xl mx-auto px-6 py-8">
 
         {data.bookings.map((b: any) => (
         <div
             key={b.bookingRef}
             onClick={() => router.push(`/invoice/${b.bookingRef}`)}
-            className="cursor-pointer"
+            className="space-y-5 mb-8 cursor-pointer hover:shadow-lg transition"
         >
             <FlightCard
             flight={b.flight}

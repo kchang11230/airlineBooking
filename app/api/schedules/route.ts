@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/mongodb";
+import { getPrice } from "@/lib/pricing";
 
 async function getDate(
     params: URLSearchParams,
@@ -81,7 +82,8 @@ export async function GET(request: Request) {
 
             dest: destDoc?.code,
             dest_name: destDoc?.name,
-            dest_tz: destDoc?.tz
+            dest_tz: destDoc?.tz,
+            price: getPrice(doc.orig, doc.dest),
         };
 
         entries.push(entry);

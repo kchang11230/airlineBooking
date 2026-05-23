@@ -2,6 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function BookingPage() {
 
@@ -12,9 +13,22 @@ export default function BookingPage() {
   const [firstName, setFirst] = useState("");
   const [lastName, setLast] = useState("");
   const [email, setEmail] = useState("");
+  
+    const [title, setTitle] = useState("");
+    const [gender, setGender] = useState("");
 
   const [loading, setLoading] = useState(false);
-  
+
+  const [flight, setFlight] = useState<any>(null);
+  useEffect(() => {
+    async function fetchFlight() {
+        const res = await fetch(`/api/schedules/${id}`);
+        const data = await res.json();
+        setFlight(data);
+    }
+
+    if (id) fetchFlight();
+  }, [id]);
 
   const book = async () => {
 
@@ -31,7 +45,9 @@ export default function BookingPage() {
         body: JSON.stringify({
             firstname: firstName,
             lastname: lastName,
-            email: email
+            email: email,
+            title: title,
+            gender: gender
         })
         }
     );
@@ -106,7 +122,18 @@ export default function BookingPage() {
               </h2>
 
               <div className="space-y-5">
+                {/* Title */}
+                <div>
+                <label className="block text-sm font-semibold mb-2">
+                    Title
+                </label>
 
+                <input
+                    className="w-full border rounded-xl p-4"
+                    placeholder="Mr / Ms / Mrs / Miss"
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+                </div>
                 {/* First */}
                 <div>
 
@@ -151,6 +178,22 @@ export default function BookingPage() {
                     }
                   />
 
+                </div>
+
+{/* gender */}
+                <div>
+                    <label className="block text-sm font-semibold mb-2">
+                        Gender
+                    </label>
+
+                    <select
+                        className="w-full border rounded-xl p-4"
+                        onChange={(e) => setGender(e.target.value)}
+                    >
+                        <option value="">Select</option>
+                        <option value="m">Male</option>
+                        <option value="f">Female</option>
+                    </select>
                 </div>
 
                 {/* Email */}
@@ -234,7 +277,7 @@ export default function BookingPage() {
                       text-3xl font-bold
                       text-[#002b5c]
                     ">
-                      $399
+                      ${flight?.price ?? 0}
                     </span>
 
                   </div>

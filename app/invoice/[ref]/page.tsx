@@ -120,6 +120,15 @@ export default function InvoicePage() {
               <div className="space-y-2 text-gray-700">
 
                 <p>
+                    <span className="font-semibold">Title:</span>{" "}
+                    {data.passenger.title}
+                </p>
+
+                <p>
+                    <span className="font-semibold">Gender:</span>{" "}
+                    {data.passenger.gender === "m" ? "Male" : "Female"}
+                </p>
+                <p>
                   <span className="font-semibold">Name:</span>{" "}
                   {data.passenger.firstname} {data.passenger.lastname}
                 </p>

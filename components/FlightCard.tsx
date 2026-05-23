@@ -157,7 +157,7 @@ export default function FlightCard({flight, hideButton = false, hideAvailability
           )}
 
           <p className="text-3xl font-bold text-[#002b5c]">
-            $399
+            ${flight.price}
           </p>
 
           <p className="text-sm text-gray-500 mb-4">

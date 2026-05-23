@@ -1,5 +1,6 @@
 import { connectDB } from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
+import { getPrice } from "@/lib/pricing";
 
 export async function GET(request: Request) {
 
@@ -38,6 +39,8 @@ export async function GET(request: Request) {
     .collection("airports")
     .findOne({ code: schedule.dest });
 
+  const price = getPrice(schedule.orig, schedule.dest);
+
   return Response.json({
     bookingRef: ref,
 
@@ -59,11 +62,13 @@ export async function GET(request: Request) {
         dest_tz: destAirport?.tz,
 
         seats_avail:
-            schedule.bookings.length < schedule.seats
+            schedule.bookings.length < schedule.seats,
+         
+       price 
     },
 
     passenger: passenger, 
 
-    price: 399
+    price
   });
 }
