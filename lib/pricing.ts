@@ -14,5 +14,5 @@ export function getPrice(orig: string, dest: string) {
     "NZTL-NZNE": 259,
   };
 
-  return prices[route] ?? 399; // 默认价
+  return prices[route] ?? 399; // default
 }
