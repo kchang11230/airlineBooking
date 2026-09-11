@@ -210,7 +210,7 @@ export default function Home() {
       </div>
 
       {/* Dates */}
-      <div className="grid grid-cols-2 gap-4 mt-6">
+      {/* <div className="grid grid-cols-2 gap-4 mt-6">
 
         <input
           type="date"
@@ -229,6 +229,70 @@ export default function Home() {
           "
           onChange={(e) => setDate2(e.target.value)}
         />
+
+      </div> */}
+      {/* Dates */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+
+        <div className="w-full">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Departure Date
+          </label>
+
+          <input
+            type="date"
+            value={date1}
+            onChange={(e) => setDate1(e.target.value)}
+            className="
+              block
+              w-full
+              min-w-0
+              h-12
+              px-4
+              py-2
+              bg-white
+              text-gray-900
+              border
+              border-gray-300
+              rounded-xl
+              appearance-none
+              focus:outline-none
+              focus:ring-2
+              focus:ring-blue-400
+              focus:border-blue-400
+            "
+          />
+        </div>
+
+        <div className="w-full">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Return Date
+          </label>
+
+          <input
+            type="date"
+            value={date2}
+            onChange={(e) => setDate2(e.target.value)}
+            className="
+              block
+              w-full
+              min-w-0
+              h-12
+              px-4
+              py-2
+              bg-white
+              text-gray-900
+              border
+              border-gray-300
+              rounded-xl
+              appearance-none
+              focus:outline-none
+              focus:ring-2
+              focus:ring-blue-400
+              focus:border-blue-400
+            "
+          />
+        </div>
 
       </div>
 
