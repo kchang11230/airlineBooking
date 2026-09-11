@@ -236,7 +236,7 @@ export default function Home() {
 
         <div className="w-full">
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Departure Date
+            Departure Earliest Date
           </label>
 
           <input
@@ -266,7 +266,7 @@ export default function Home() {
 
         <div className="w-full">
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            Return Date
+            Departure Latest Date
           </label>
 
           <input
