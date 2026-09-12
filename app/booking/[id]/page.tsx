@@ -32,6 +32,40 @@ export default function BookingPage() {
 
   const book = async () => {
 
+    // Validate passenger information
+    if (!title.trim()) {
+      alert("Please enter your title.");
+      return;
+    }
+
+    if (!firstName.trim()) {
+      alert("Please enter your first name.");
+      return;
+    }
+
+    if (!lastName.trim()) {
+      alert("Please enter your last name.");
+      return;
+    }
+
+    if (!gender) {
+      alert("Please select your gender.");
+      return;
+    }
+
+    if (!email.trim()) {
+      alert("Please enter your email address.");
+      return;
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email.trim())) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
     setLoading(true);
 
     // 1. create passenger
